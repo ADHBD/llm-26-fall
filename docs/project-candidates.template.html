@@ -10,17 +10,18 @@
   <link rel="stylesheet" href="../assets/course-language.css">
   <link rel="stylesheet" href="../assets/project-candidates.css">
   <script src="../assets/course-language.js" defer></script>
+  <script src="../assets/project-candidates-translations.js" defer></script>
   <script src="../assets/project-candidates.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#catalog">Skip to project candidates</a>
 <header class="reading-header">
-  <nav aria-label="Course navigation">
+  <nav aria-label="Course navigation" data-en-label="Course navigation" data-zh-label="课程导航">
     <a class="course-home" href="../index.html#project">NLP and LLMs · Fall 2026</a>
     <a href="#catalog">Browse projects</a>
     <a href="#how-to-choose">Proposal checklist</a>
     <a href="#compute-guide">Compute guide</a>
-    <div class="lang-toggle" role="group" aria-label="Course interface language">
+    <div class="lang-toggle" role="group" aria-label="Course interface language" data-en-label="Course interface language" data-zh-label="课程界面语言">
       <button type="button" data-lang="en" aria-pressed="true">EN</button>
       <button type="button" data-lang="zh" aria-pressed="false">中文</button>
     </div>
@@ -30,7 +31,7 @@
 <aside class="catalog-sidebar">
   <details class="catalog-toc" open>
     <summary>On this page</summary>
-    <nav aria-label="Project proposal contents">
+    <nav aria-label="Project proposal contents" data-en-label="Project proposal contents" data-zh-label="项目提案目录">
       <ol class="toc-sections">
         <li><a href="#overview">1. Prepare and overview</a></li>
         <li><a href="#compute-guide">2. Resource requirements</a></li>
@@ -43,12 +44,12 @@
     </nav>
   </details>
 </aside>
-<main class="catalog-main" lang="en">
+<main class="catalog-main">
 <section id="overview" aria-labelledby="overview-title">
   <div class="catalog-hero">
     <p class="reading-kicker">INDIVIDUAL PROJECT · FALL 2026</p>
     <h1 id="overview-title">Choose a project that interests you</h1>
-    <p class="catalog-intro">Work individually on <a href="#student-proposed-project">your own project</a> or <a href="#catalog">one of {{COUNT}} candidates</a>, with a small experiment, CPU or 1–{{RECOMMENDED_GPUS}} GPU requirements, and a fallback.</p>
+    <p class="catalog-intro">Work individually on <a href="#student-proposed-project" data-en="your own project" data-zh="自拟项目">your own project</a> or <a href="#catalog" data-en="one of {{COUNT}} candidates" data-zh="{{COUNT}} 个候选题之一">one of {{COUNT}} candidates</a>, with a small experiment, CPU or 1–{{RECOMMENDED_GPUS}} GPU requirements, and a fallback.</p>
   </div>
 
   <section class="guide-panel" id="how-to-choose" aria-labelledby="choose-title">

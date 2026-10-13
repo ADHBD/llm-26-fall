@@ -14,6 +14,45 @@
   const toc = document.querySelector('.catalog-toc');
   const tocLinks = [...toc.querySelectorAll('a')];
   const compactLayout = window.matchMedia('(max-width: 980px)');
+  const translations = Object.fromEntries(
+    Object.entries(window.projectCandidateTranslations || {}).map(([key, value]) => [key.trim(), value])
+  );
+  const englishTitle = document.title;
+  const description = document.querySelector('meta[name="description"]');
+  const englishDescription = description.content;
+  const searchPlaceholder = search.placeholder;
+  const staticTextNodes = [];
+
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (node.parentElement.closest('script, style, code, pre, svg, .lang-toggle, [data-en][data-zh]')) continue;
+    const original = node.nodeValue;
+    const key = original.trim();
+    if (Object.prototype.hasOwnProperty.call(translations, key)) {
+      staticTextNodes.push({
+        node,
+        en: original,
+        zh: original.replace(key, translations[key]),
+      });
+    }
+  }
+
+  function isChinese() {
+    return window.CourseLanguage?.get() === 'zh';
+  }
+
+  function translateStatic() {
+    const chinese = isChinese();
+    staticTextNodes.forEach(entry => { entry.node.nodeValue = chinese ? entry.zh : entry.en; });
+    document.title = chinese ? (translations[englishTitle] || englishTitle) : englishTitle;
+    description.content = chinese
+      ? (translations[englishDescription] || englishDescription)
+      : englishDescription;
+    search.placeholder = chinese
+      ? '试试：上下文、分词器、验证器、中文……'
+      : searchPlaceholder;
+  }
 
   function updateCurrentSection() {
     let current = tocLinks[0];
@@ -30,8 +69,10 @@
   function updateExpandLabel() {
     const visible = cards.filter(card => !card.hidden);
     expand.disabled = visible.length === 0;
-    expand.textContent = visible.length && visible.every(card => card.querySelector('details').open)
-      ? 'Collapse visible project details' : 'Expand visible project details';
+    const collapse = visible.length && visible.every(card => card.querySelector('details').open);
+    expand.textContent = isChinese()
+      ? (collapse ? '收起当前显示项目的详细信息' : '展开当前显示项目的详细信息')
+      : (collapse ? 'Collapse visible project details' : 'Expand visible project details');
   }
 
   function update() {
@@ -48,7 +89,9 @@
       group.hidden = ![...group.querySelectorAll('.project-card')].some(card => !card.hidden);
     }
     const count = cards.filter(card => !card.hidden).length;
-    counter.textContent = `${count} of ${cards.length} projects`;
+    counter.textContent = isChinese()
+      ? `${count} 个候选项目，共 ${cards.length} 个`
+      : `${count} of ${cards.length} projects`;
     empty.hidden = count > 0;
     updateExpandLabel();
     updateCurrentSection();
@@ -112,6 +155,10 @@
     updateExpandLabel();
   });
   cards.forEach(card => card.querySelector('details').addEventListener('toggle', updateExpandLabel));
+  window.addEventListener('course:language', () => {
+    translateStatic();
+    update();
+  });
   window.addEventListener('hashchange', revealLinkedTarget);
   let printState;
   window.addEventListener('beforeprint', () => {
@@ -121,6 +168,7 @@
   window.addEventListener('afterprint', () => {
     if (printState) allCards.forEach((card, i) => { card.querySelector('details').open = printState[i]; });
   });
+  translateStatic();
   update();
   revealLinkedTarget();
 })();

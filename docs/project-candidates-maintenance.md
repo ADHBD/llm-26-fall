@@ -27,6 +27,13 @@ resource estimates are not measured course results or staff allocations.
 Upstream work can require paid agent trials, hosted environments, domain
 expertise, and external review; each route has a local minimum outcome.
 
+The catalog shares the course-wide English/Chinese language switch. Keep
+`title_zh`, `summary_zh`, and `question_zh` with every project, and add
+`resources.note_zh` for the short resource note shown on each card. Interface
+copy is maintained in `assets/project-candidates-translations.js`; paper
+titles remain in their source language, and expanded experiment details remain
+English with that scope labeled in the interface.
+
 ## Independent pre-merge review, October 9, 2026
 
 Reviewed all 48 suggestions and the student-proposed route against the course
