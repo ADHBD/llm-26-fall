@@ -24,9 +24,68 @@ N-gram lecture into this template: probabilistic N-gram LMs, perplexity,
 smoothing, and neural probabilistic LMs. Its
 [teaching plan](lecture-02/teaching-plan.md) maps the timing and lists the
 differences from the Spring deck; its
-[notebook](lecture-02/lecture-02-exercise.ipynb) runs exercises E01–E05 and
-practice P01 offline with the standard library. Media provenance is in
+[notebook](lecture-02/lecture-02-exercise.ipynb) runs exercises E01–E03 and
+optional practices P01–P04 offline with the standard library. Media provenance is in
 [lecture-02/assets/README.md](lecture-02/assets/README.md).
+
+[Lecture 03](lecture-03/index.html) follows token IDs through embedding lookup,
+next-token loss, autograd, and a training step in 60 slides. A ten-slide
+classical bridge connects counts, PPMI, SVD/GloVe, word2vec, and fastText to
+current representations. The main path includes held-out coverage probes,
+weight tying, contextual states, and measured and estimated training costs,
+using pinned Qwen configurations. Its
+[teaching plan](lecture-03/teaching-plan.md) includes the three-period timing and
+the revision map from the Spring port. The
+[notebook](lecture-03/lecture-03-exercise.ipynb) runs exercises E01–E06 and
+optional practices P01–P03 offline on CPU. Longer classification and
+static-embedding material is in [optional reading](lecture-03/classical-reading.md).
+An opening visual review reuses Lecture 02’s toy corpus: trace bigram counts,
+normalize, and sample a next token before the neural computation.
+Seven editable diagrams and a PPMI heatmap accompany the explanations; browser
+controls demonstrate row lookup and the memory cost of changing table dimensions.
+See [asset provenance](lecture-03/assets/README.md) for the teaching figure,
+model metadata, and retained Spring images.
+
+[Lecture 04](lecture-04/index.html) develops a fixed-window neural LM,
+recurrent states, LSTM memory, and additive attention in an RNN encoder–decoder
+in 39 slides. Its [teaching plan](lecture-04/teaching-plan.md) records the
+boundary with Lecture 05 and maps three 45-minute periods. The
+[notebook](lecture-04/lecture-04-exercise.ipynb) runs E01–E05 offline on CPU:
+context shapes, training, recurrent derivatives, gates, and source alignment.
+Three editable diagrams, the source encoder–decoder and attention illustrations, and a
+prepared NPLM loss curve accompany the examples.
+Longer micrograd and recurrent training remain in
+[optional reading](lecture-04/optional-reading.md). See
+[asset provenance](lecture-04/assets/README.md).
+
+[Lecture 05](lecture-05/index.html) combines the complete component test deck
+with the original runnable Transformer walkthrough. It covers self-attention,
+sinusoidal positions and RoPE, multi-head attention, residuals, LayerNorm, FFNs,
+and the original paper's experiments. The second revision uses “Noa can be
+annoying but she …” across the component diagrams, demos, and notebooks.
+All component topics and reveal sequences remain; the original test deck is
+kept unchanged as an archive. The [practice notebook](lecture-05/practice.ipynb)
+contains E01–E06 in slide order. The separate
+[implementation notebook](lecture-05/lecture-05-exercise.ipynb) covers
+P01 and E01–E05: masked outputs, tensor shapes, positions, normalization,
+parameter counts, complete-model causality, and measured training curves.
+The 62-slide deck includes two visual bridges to EleutherAI's RoPE blog:
+complex multiplication and different rotation speeds within one head.
+Core E02 adds independent numerical checks for these explanations.
+Its [teaching plan](lecture-05/teaching-plan.md) distinguishes the full material
+bank from the classroom route and reserves the final 15 minutes for Quiz 2.
+See the [integration guide](lecture-05/README.md),
+[optional reading](lecture-05/optional-reading.md), and
+[asset provenance](lecture-05/assets/README.md).
+
+[Lecture 06](lecture-06/index.html) continues the Noa decoder through shifted
+batches, AdamW, learning-rate schedules, clipping, validation, checkpoint
+recovery, and greedy/temperature/top-p decoding. Its 52-slide deck has a
+47-slide classroom route and five optional appendix pages. The
+[notebook](lecture-06/practice.ipynb) follows E01–E06 and runs offline on CPU
+after `uv sync --extra tokenization`. It includes a real fresh-process restart
+comparison and a weights-only control. See the [teaching plan](lecture-06/teaching-plan.md),
+[reading guide](lecture-06/optional-reading.md), and [asset provenance](lecture-06/assets/README.md).
 
 ## Teaching from a classroom browser
 
@@ -133,6 +192,9 @@ slides/
   example/                Checked sample with a browser demonstration
   lecture-01/             Lecture 01 deck and lecture-01-exercise.ipynb
   lecture-02/             Lecture 02 deck and lecture-02-exercise.ipynb
+  lecture-03/             Lecture 03 deck and lecture-03-exercise.ipynb
+  lecture-04/             Lecture 04 deck and lecture-04-exercise.ipynb
+  lecture-05/             Lecture 05 deck, practice and implementation notebooks
   01-tokenization/        A lecture created when its content is ready
     index.html            Shared viewer shell
     lecture.json          Title, language, and optional demo module
@@ -302,6 +364,10 @@ The checker tests every slide at 1440×900, 1280×720, and 1024×768. It rejects
 overflowing content, small text, missing local assets, unmatched exercise IDs,
 unfinished placeholders, and slide-specific style overrides. It also checks
 sample interactions and runs with external runtime requests blocked.
+
+Lecture-related PRs run these checks automatically and save downloadable
+screenshots and PDFs. See [lecture checks and review previews](../docs/lecture-quality.md)
+for the workflow, artifacts, and pre-class rehearsal.
 
 Review the images and PDF in `slides/.checks/example/`. Long text should become
 another slide. A successful check does not establish that the teaching content
