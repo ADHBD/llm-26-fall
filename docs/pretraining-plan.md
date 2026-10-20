@@ -78,7 +78,7 @@ light pass (Section 4) so students see the pipeline, not to improve on it.
 
 Mixture: English 40%, Chinese 29%, code 11%, math 11%, reference 9%. The
 Chinese share is deliberately high for a Fudan class and is the main lever
-students can vary in the Week 7 data-policy ablation.
+students can vary in the Week 8 data-policy ablation.
 
 Sizes: 35B tokens is about 140 GB of text and 140 GB tokenized as uint32
 (uint16 cannot hold the 151,669-entry Qwen vocabulary), well inside the 3 TB
@@ -100,7 +100,7 @@ smaller vocabulary would also cut the output-layer cost noted in Section 2.
 2. **Filter**: the C4/Gopher line and document rules, the language ID check,
    and the PII regexes (Weeks 2–4 regex tasks are exactly these functions).
 3. **Deduplicate**: exact hashes per document, then MinHash near-duplicates
-   within each source (Week 7, data lecture).
+   within each source (Week 8, data lecture).
 4. **Decontaminate**: 10-gram overlap against every benchmark we will report
    (DeepSeekMath's rule), before tokenization.
 5. **Tokenize and pack** into fixed 2048-token sequences with document

@@ -48,11 +48,11 @@ Weeks follow the university academic calendar: they run Sunday through Saturday,
 | 1 | Wed, Sep 9, 2026 | Introduction and tokenization | First class |
 | 2 | Wed, Sep 16, 2026 | N-gram language models | A1 released |
 | 3 | Wed, Sep 23, 2026 | Embeddings and PyTorch for language models | Quiz 1 |
-| 4 | Wed, Sep 30, 2026 | Neural language models and attention | A1 due |
-| 5 | **Sat, Oct 10, 2026** | **The Transformer as a working model** | **Make-up class**; Quiz 2; A2 released |
-| 6 | Wed, Oct 14, 2026 | Pretraining and decoding in practice | Project proposal due |
-| 7 | Wed, Oct 21, 2026 | Data preparation and quality | Quiz 3 |
-| 8 | Wed, Oct 28, 2026 | Compute budgets and scaling | A2 due **Sat, Oct 31** |
+| 4 | Wed, Sep 30, 2026 | Neural LMs and Recurrent Attention | A1 due |
+| 5 | **Sat, Oct 10, 2026** | **Attention and the Transformer** | **Make-up class**; Quiz 2; [A2 released](../assignments/a2-build-a-small-lm/README.md); [candidate projects](project-candidates.html) |
+| 6 | Wed, Oct 14, 2026 | Pretraining and decoding in practice | — |
+| 7 | Wed, Oct 21, 2026 | Compute budgets and scaling; guest talk by Jiaxuan Zou | Quiz 3; Project proposal due |
+| 8 | Wed, Oct 28, 2026 | Data preparation and quality | A2 due **Sat, Oct 31** |
 | 9 | Wed, Nov 4, 2026 | Evaluation and experimental design | — |
 | 10 | Wed, Nov 11, 2026 | Supervised fine-tuning | Quiz 4; A3 released |
 | 11 | Wed, Nov 18, 2026 | Preferences, rewards, and alignment | — |
@@ -66,6 +66,13 @@ Weeks follow the university academic calendar: they run Sunday through Saturday,
   October 10; time and room follow the university make-up-day notice.
 - There are 16 meetings of three 45-minute periods: 48 academic periods,
   matching the registered allocation. Lecture numbers follow these meetings.
+- Lecture 07 and Lecture 08 exchange topics to align with
+  [Jiaxuan Zou's](https://jiaxuanzou0714.github.io/) guest session on
+  **October 21, 15:25–16:10 (Asia/Shanghai), period 8**, in HGX103.
+  The topic is [How to Build a Scientific Scaling Ladder](https://jiaxuanzou0714.github.io/blog/2026/how-to-build-scientific-scaling-ladder/).
+  The first two periods introduce compute budgets and scaling laws, with
+  the existing 15-minute Quiz 3 slot in the first period. Quiz 3, the project
+  proposal deadline, and the A2 deadline retain their published dates.
 - December 23 includes guided revision of project claims and evidence.
   Project checkpoints remain individual written submissions through eLearning.
 - Weeks 17–18 (Dec 27, 2026 – Jan 9, 2027) are exam weeks with no classes.
@@ -88,16 +95,18 @@ have the same requirements, points, and deadlines.
 | Quiz 4 | November 11 | In class |
 | Quiz 5 | December 9 | In class |
 | A1: Tokenization and language models | September 16 | September 30 |
-| A2: Build a small LM | October 10 | October 31 |
+| [A2: Build and investigate a small language model](../assignments/a2-build-a-small-lm/README.md) | October 10 | October 31, 23:59 (Asia/Shanghai) |
 | A3: Adapt and evaluate | November 11 | December 2 |
-| Project proposal | Project introduced September 9 | October 14 |
+| Project proposal | Project introduced September 9 | October 21 |
 | Project progress update | Follows proposal feedback | November 25 |
 | Final report, code, and experiment record | Builds on project checkpoints | December 30 |
 
-The [September 29 review proposal](schedule-adjustment-proposal.md) compares
-these dates with the previous schedule and explains the three-week assignment
-windows. Assessment weights are quizzes 10%, assignments 45%, and the
-individual project 45%.
+The [September 29 review proposal](schedule-adjustment-proposal.md) records
+the schedule adjustment and explains the three-week assignment windows.
+On October 9, the instructor extended the project proposal deadline to
+October 21 to give students more time to consider their project questions.
+Assessment weights are quizzes 10%, assignments 45%, and the individual
+project 45%.
 
 ## Sources
 

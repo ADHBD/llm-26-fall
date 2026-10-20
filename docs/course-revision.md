@@ -1,9 +1,10 @@
 # Fall 2026 course revision: review draft
 
-Review draft updated September 29, 2026. The lecture sequence uses the October 10
+Review draft updated October 9, 2026. The lecture sequence uses the October 10
 make-up meeting for Transformers and ends with research synthesis on December 23.
 The [schedule adjustment proposal](schedule-adjustment-proposal.md) records the
-assessment dates for instructor review. The [course page](../index.html#schedule)
+approved assessment dates and the October 9 proposal-deadline extension.
+The [course page](../index.html#schedule)
 and [dated schedule](schedule.md) carry the matching sequence. Lectures 01–04
 and A1 are available; linked spring and CS336 materials support later preparation.
 
@@ -38,11 +39,11 @@ mandatory curriculum delivered during every meeting.
 | 1 | Sep 9 | Introduction and tokenization | A correct BPE trace and bilingual tokenization comparison |
 | 2 | Sep 16 | Language models, cross-entropy, and perplexity | A bigram baseline and a checked loss calculation |
 | 3 | Sep 23 | Embeddings and PyTorch | A tensor trace through a small neural LM |
-| 4 | Sep 30 | Neural LMs and attention | A working tiny training loop and checked attention computation |
+| 4 | Sep 30 | Neural LMs and recurrent attention | A tiny training loop, recurrent-state trace, and additive source alignment |
 | 5 | Sat, Oct 10 | The Transformer as a working model | A decoder block with shape and causal-mask checks |
 | 6 | Oct 14 | Pretraining and decoding | A training curve, resumed run, and diagnosed failure |
-| 7 | Oct 21 | Data preparation and quality | A comparison of two data policies under controlled conditions |
-| 8 | Oct 28 | Compute budgets and scaling | A resource estimate checked against measurements |
+| 7 | Oct 21 | Compute budgets and scaling; Jiaxuan Zou guest session | A compute estimate and a scaling prediction checked at a held-out scale |
+| 8 | Oct 28 | Data preparation and quality | A comparison of two data policies under controlled conditions |
 | 9 | Nov 4 | Evaluation and experimental design | An audited evaluation and a qualified interpretation |
 | 10 | Nov 11 | Supervised fine-tuning | A before/after adaptation comparison |
 | 11 | Nov 18 | Preferences, rewards, and alignment | A checked preference loss and reward-failure analysis |
@@ -62,6 +63,11 @@ guides revision of project claims, evidence, and writing.
 All 16 meetings retain instruction and practical work. Project checkpoints
 are written submissions; the final synthesis session adds guided practice.
 
+The instructor moved scaling to Week 7 for Jiaxuan Zou's guest talk,
+[How to Build a Scientific Scaling Ladder](https://jiaxuanzou0714.github.io/blog/2026/how-to-build-scientific-scaling-ladder/),
+in the third period. Data preparation moves to Week 8. Assessment dates
+remain as listed in the [current schedule](schedule.md).
+
 ## Spring material to retain, shorten, and move
 
 The following are changes to required fall coverage. Keep the spring materials
@@ -72,7 +78,7 @@ available as references; do not delete their source files.
 | L01 introduction/tokenization | Ambiguity, BPE, vocabulary decisions, bilingual examples | Long product/history tour; regex tutorial moves to preparation | Bytes/Unicode, round-trip checks, and tokenizer tradeoffs |
 | L02 n-grams | Chain rule, MLE, sampling, held-out loss, additive smoothing, interpolation | Katz backoff and Good–Turing/Kneser–Ney details become optional; consolidate repeated NPLM introduction | Explicit NLL/cross-entropy connection and baseline interpretation |
 | L03 classification/embeddings | Distributional hypothesis, embedding lookup, one skip-gram example, similarity, contextual representations | Repeated NB/LR derivations and full word2vec gradient sequence; GloVe/SVD/fastText survey optional; TF-IDF moves to retrieval | Batching, autograd, output projections, and shape reasoning |
-| L04 neural LMs | Existing PyTorch introduction, small feedforward LM, tiny-batch training | Micrograd optional; RNN/LSTM motivation brief; no separate required LSTM training pipeline | Training-loop diagnosis and attention computation |
+| L04 neural LMs | Existing PyTorch introduction, small feedforward LM, tiny-batch training | Micrograd and full LSTM training remain optional; Q/K/V and causal self-attention move to L05 | Training-loop diagnosis, recurrent memory and gates, and Bahdanau alignment |
 | L05 attention/Transformers | Attention intuition, Q/K/V, multiple heads, residuals, normalization | Repeated BPE walkthrough, detailed MT results, constituency parsing, long encoder–decoder tour | One consistent decoder implementation and modern component comparisons |
 | L06 GPT/pretraining | Existing GPT training notebook, AdamW, scheduling, checkpoint use, HellaSwag example | ELMo history and repeated beam-search variants shortened; model-generation catalog optional | Make training configuration and failure diagnosis explicit outcomes |
 | L07 benchmarks | Representative task examples and distinctions between loss and downstream scores | Dataset-by-dataset GLUE/SuperGLUE catalog and many leaderboard slides become reference tables | Contamination, prompt sensitivity, uncertainty, metrics, and error analysis |
@@ -98,10 +104,10 @@ requirements for this course.
 | Source | Fall use | Adaptation boundary |
 | --- | --- | --- |
 | L01 tokenization; A1 basics | Weeks 1–2; A1 | Small correctness-focused tokenizer exercise; no high-throughput implementation requirement |
-| L02 PyTorch and resource accounting | Weeks 3, 6, 8 | Tensor mechanics and resource estimates; detailed hardware arithmetic optional |
+| L02 PyTorch and resource accounting | Weeks 3, 6, 7 | Tensor mechanics and resource estimates; detailed hardware arithmetic optional |
 | L03 architectures; A1 components | Week 5; A2 | One coherent decoder baseline; one modern-component ablation optional |
-| L13–14 data; A4 | Week 7; A2 or project | Small supplied corpus, filtering/deduplication, and controlled comparison |
-| L09/L11 scaling; A3 | Week 8 | Fit supplied run results and optionally add small local runs; no Stanford API dependency |
+| L13–14 data; A4 | Week 8; A2 or project | Small supplied corpus, filtering/deduplication, and controlled comparison |
+| L09/L11 scaling; A3 | Week 7 | Fit supplied run results and optionally add small local runs; no Stanford API dependency |
 | L12 evaluation | Week 9 and project | Choose appropriate tasks, audit validity, and qualify conclusions |
 | L15–16 post-training; A5 | Weeks 10–11; A3 | SFT core, DPO worked exercise; GRPO optional practice for all students |
 | L10 inference; A2 systems selections | Week 13 | Measure caching/batching/quantization; custom kernels and distributed training optional |
@@ -124,7 +130,7 @@ The proposal establishes importance, prior work, plausible alternatives,
 evaluation, and feasibility. Careful replication, useful failure analysis, or
 a sound negative result can earn full credit.
 
-Written milestones are Week 6 proposal, Week 12 progress update (including a
+Written milestones are Week 7 proposal, Week 12 progress update (including a
 baseline and initial results), and Week 17 final report. These replace the former posters, oral defenses,
 pod comparison pages, and mandatory reviewer roles. Students can reuse and revise
 checkpoint text in the final report. Peer discussion and individual office-hour
@@ -155,7 +161,7 @@ than receiving duplicate credit for the same submission.
 | A1: Tokenization and language models | Week 2, Sep 16 | Week 4, Sep 30 |
 | A2: Build and investigate a small LM | Week 5, Oct 10 | Week 8, Sat, Oct 31 |
 | A3: Adapt and evaluate | Week 10, Nov 11 | Week 13, Dec 2 |
-| Project proposal | Project introduced Week 1 | Week 6, Oct 14 |
+| Project proposal | Project introduced Week 1 | Week 7, Oct 21 |
 | Project progress update, including baseline and initial results | Follows proposal feedback | Week 12, Nov 25 |
 | Final report, code, experiment record | Reuses the written checkpoints | Week 17, Dec 30 |
 

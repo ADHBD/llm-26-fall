@@ -9,13 +9,13 @@ the lecture workflow.
 
 | Check | Evidence for the reviewer |
 | :--- | :--- |
-| Lecture examples and notebooks | Existing Python tests execute the offline teaching examples and verify numerical results, tensor shapes, notebook structure, and the notebook launcher; Node tests check the n-gram demonstration |
+| Lecture examples and notebooks | Existing Python tests execute the offline teaching examples and verify numerical results, tensor shapes, notebook structure, and the notebook launcher; Node tests check the n-gram and position demonstrations |
 | Slides and PDF | Every deck is checked at three screen sizes for layout, font size, math rendering, local links and assets, and supported interactions; PDF export checks the print layout and page count |
 | Reading pages and navigation | Browser checks exercise the bilingual reader, mobile layouts, and shared navigation |
 
 Lecture changes recheck the example and all lecture decks because they share
-the renderer, navigation, and assets. Newly added folders named `lecture-NN` or
-`NN-topic` are discovered through their `lecture.json`. The unfinished
+the renderer, navigation, and assets. Newly added folders named `lecture-NN`,
+`lecture-NN-test`, or `NN-topic` are discovered through their `lecture.json`. The unfinished
 `slides/template/` is excluded. Add focused numerical tests in
 `tests/test_lecture_NN.py` when introducing a lecture; discovering a deck does
 not create tests for its teaching claims.
