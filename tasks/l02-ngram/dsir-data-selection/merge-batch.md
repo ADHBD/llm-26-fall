@@ -1,7 +1,7 @@
 # October 20, 2026 review: DSIR data selection
 
-**Status:** approved and ready. Merge the reviewed heads below only after this
-record reaches `main` and their GitHub checks pass.
+**Status:** complete. Both remaining student PRs merged on October 20, 2026,
+at the approved heads after the batch record reached `main` and checks passed.
 
 **Instructor decision, October 20, 2026:** after reviewing the specific
 exception and corrections, the instructor approved completing the remaining
@@ -61,9 +61,28 @@ and personal-case expected outputs in #302 are retained.
 - Experiment reports remain local. These are optional participation tasks;
   checker results are not course grades.
 
-## Completion requirements
+## Completion record
 
-Merge the student PRs at the recorded heads, record their resulting merge
-commits, and regenerate the progress board through a completion PR.
+- The approved batch record merged first in
+  [PR #308](https://github.com/baojian/llm-26-fall/pull/308), commit
+  `b9f2d08b7beae8cbbc2d750f7400acca054616a2`, at 13:00:43 Asia/Shanghai.
+- Both student PRs merged individually with their original authorship and
+  separate teaching-team correction history preserved:
+
+| PR | Merged October 20, Asia/Shanghai | Merge commit |
+| --- | --- | --- |
+| #300 | 13:00:53 | `5ebb0b513a9d5ec3f5f4cd4adc57288843a68e6f` |
+| #302 | 13:00:57 | `ce6bb87fcda08c5336bed191220d9d410c915319` |
+
+- Each final submission passes all 19 public checks. Both PRs had passing
+  GitHub feedback and regression checks before merging.
+- The completion PR regenerates `tasks/PROGRESS.md` and `tasks/progress.svg`
+  from the merged submissions and actual merged-PR counts. `oooo1027` and
+  `cyk-1234` each receive one passed-task entry for DSIR; their second task
+  entry comes from the contamination batch. The existing `cincinnatus23`
+  submission and credit are retained.
+- These entries record participation and checker results. No course-grade
+  allocation is changed.
+
 Later submissions or fixes require a new explicit instructor decision under
 the repository policy.
