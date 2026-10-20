@@ -18,6 +18,11 @@ with other universities are retained in the maintenance notes. See the
 [maintenance notes](project-candidates-maintenance.md) for review status,
 source checks, upstream contribution routes, and rebuilding instructions.
 
+The [NanoGPT training speed record](nanogpt-training-speed-record.md) preserves
+the September 2026 result of reaching a fixed validation-loss target in
+39.9 seconds on eight H100 GPUs, with sources, hardware, and timing context
+for classroom discussion.
+
 The [MiMo RL archive guide](mimo-rl-archive.md) documents the public training
 history preserved for the post-training lectures and how to retrieve it.
 
