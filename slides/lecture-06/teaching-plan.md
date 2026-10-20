@@ -16,7 +16,7 @@ this class. The scope follows the approved
 Students trace batches into optimizer updates, check fitting and development
 loss, recover a training state in a fresh process, and compare decoding policies.
 Lecture 05 supplies the decoder; this lecture spends time on operating and
-checking it. Lecture 07 develops data quality, Lecture 08 scaling, Lecture 09
+checking it. Lecture 07 develops scaling, Lecture 08 data quality, Lecture 09
 evaluation, Lecture 10 adaptation, and Lecture 13 inference/KV caching.
 
 The final course reminder uses A2's **October 31, 23:59** deadline and the
@@ -77,10 +77,10 @@ The instructor-supplied **`lecture-06-slides-gpts.pptx`** contains **130 slides*
 | 41–42 | Architecture/objective comparison | Brief reminder in notes; detailed architecture comparison already belongs to Lecture 05. |
 | 43–52, 54–63 | GPT-1/2/3, transfer, zero/few-shot use | One short opening motivation and one optional historical comparison. Date historical claims and retain original experiment settings. |
 | 53 | Bycroft visualization | Link back to the Lecture 05 resource list. |
-| 65–73 | Corpus sources, filtering, data selection | Carry forward to Lecture 07; recheck dataset and rights claims before reuse. |
+| 65–73 | Corpus sources, filtering, data selection | Carry forward to Lecture 08; recheck dataset and rights claims before reuse. |
 | 74 | Perplexity | Retain next to held-out cross-entropy, with tokenization and split caveats. |
-| 75 | Resources, energy, fairness | Brief run-cost reminder; longer discussion in Lectures 08–09. |
-| 77–88 | Scaling laws, FLOPs, compute allocation | Lecture 08 and the pretraining planning issues. |
+| 75 | Resources, energy, fairness | Brief run-cost reminder; longer discussion in Lectures 07 and 09. |
+| 77–88 | Scaling laws, FLOPs, compute allocation | Lecture 07 and the pretraining planning issues. |
 | 90–94 | KV cache | Lecture 13; a forward pointer is sufficient here. |
 | 96–101 | PEFT and LoRA | Lecture 10. |
 | 102–103 | Hallucinations and harms | Lectures 09 and 11; keep sample quality claims modest here. |

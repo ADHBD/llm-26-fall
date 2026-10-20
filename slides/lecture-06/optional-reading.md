@@ -54,8 +54,8 @@ differs from the instructor-supplied local snapshot; the exact source hash and
 
 ## Later lectures and our training plan
 
-- Lecture 07: corpus sources, filtering, deduplication, and contamination.
-- Lecture 08: scaling, compute allocation, and prediction from small runs.
+- Lecture 08: corpus sources, filtering, deduplication, and contamination.
+- Lecture 07: scaling, compute allocation, and prediction from small runs.
 - Lecture 09: evaluation beyond a single loss or sample.
 - Lecture 10: fine-tuning, PEFT, and LoRA.
 - Lecture 13: KV caching and inference cost.
