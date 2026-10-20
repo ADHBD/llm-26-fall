@@ -46,6 +46,13 @@ MY_CASES = [
         [["long", "short"]],
     ),
 ]
+# Teaching-team clarification, October 20 (original reflection below):
+# Exact Jaccard verifies duplicate candidates; contamination uses the
+# separate exhaustive train/evaluation containment check.
+# The audit uses invented scores, so its ranking reversal demonstrates
+# evaluation sensitivity and is not evidence that a real model memorized text.
+# contained_passage uses BIGRAMS: Jaccard is 0.5, below the 0.8 threshold,
+# while containment is 1.0 and passes its threshold; both do not pass.
 NOTES = (
     "The four-band run misses two above-threshold pairs, eval-00/train-00 and "
     "eval-13/train-44, because those two documents never land in the same band bucket, "
