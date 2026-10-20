@@ -394,7 +394,7 @@ Split documents **before** creating windows. Freeze the tokenizer and split.
 Use evaluation mode and disable gradient recording; restore training mode afterward.
 
 Note:
-This is a separate instructor-written toy corpus with the same 12-token vocabulary and context limit. Exact document strings are disjoint across splits. Words and some prefixes deliberately overlap: disjoint documents do not imply no shared language. Each document is used whole, with EOS, no BOS, no padding, no cross-document windows. Training samples one document uniformly per update, so the stochastic objective weights documents equally; the reported full-split evaluation weights target tokens equally. The model and optimization settings are recorded in the provenance. Conclusions are limited to these templates; they do not establish general language ability. This slide introduces split discipline; broader data contamination belongs to Lecture 07.
+This is a separate instructor-written toy corpus with the same 12-token vocabulary and context limit. Exact document strings are disjoint across splits. Words and some prefixes deliberately overlap: disjoint documents do not imply no shared language. Each document is used whole, with EOS, no BOS, no padding, no cross-document windows. Training samples one document uniformly per update, so the stochastic objective weights documents equally; the reported full-split evaluation weights target tokens equally. The model and optimization settings are recorded in the provenance. Conclusions are limited to these templates; they do not establish general language ability. This slide introduces split discipline; broader data contamination belongs to Lecture 08.
 
 ---
 
@@ -765,10 +765,10 @@ Slides 44–45 use six minutes. These strings are actual recorded CPU generation
 
 **A2:** October 31, 23:59 · submit privately through eLearning.
 
-<p class="caption">Next: Lecture 07 data quality. Project proposals: October 21, 23:59. All times Asia/Shanghai.</p>
+<p class="caption">Next: Lecture 07 scaling. Project proposals: October 21, 23:59. All times Asia/Shanghai.</p>
 
 Note:
-Finish the six-minute handoff group. Point students to the released A2 README for its exact interfaces, budgets, tiny fitting fixture, data conventions, and submission contract. The lecture supplies ungraded toy demonstrations and does not replace required assignment runs. In particular, the lecture's Noa floor ln2/10 and two-document data are not A2's fitting fixture. A2 Part 4's deduplication study is supported by Lecture 07. All students have the same required work and grading criteria. Public assignment materials contain the handout, starter code, data, and public tests; submissions go privately through eLearning. Current dates: https://baojian.github.io/llm-26-fall/#schedule and ../../assignments/a2-build-a-small-lm/README.md.
+Finish the six-minute handoff group. Point students to the released A2 README for its exact interfaces, budgets, tiny fitting fixture, data conventions, and submission contract. The lecture supplies ungraded toy demonstrations and does not replace required assignment runs. In particular, the lecture's Noa floor ln2/10 and two-document data are not A2's fitting fixture. A2 Part 4's deduplication study is supported by Lecture 08. All students have the same required work and grading criteria. Public assignment materials contain the handout, starter code, data, and public tests; submissions go privately through eLearning. Current dates: https://baojian.github.io/llm-26-fall/#schedule and ../../assignments/a2-build-a-small-lm/README.md.
 
 ---
 
@@ -801,7 +801,7 @@ Final five minutes of Period 3 include this exit check, references, questions, a
 The distinction on slide 4 is **whether weights change during use**.
 
 Note:
-Optional appendix, outside the timed route. This compresses Spring slides 43–63. Avoid mixing model sizes, datasets, evaluation protocols, and benchmark scores into a single ranking. Relevant primary sections: GPT-1 §§3.1–3.2, https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf; GPT-2 §§2–3, https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf; GPT-3 §2.1, https://arxiv.org/abs/2005.14165. These are historical descriptions rather than current state-of-the-art claims. Dataset inventories move to Lecture 07; scale and compute to Lecture 08.
+Optional appendix, outside the timed route. This compresses Spring slides 43–63. Avoid mixing model sizes, datasets, evaluation protocols, and benchmark scores into a single ranking. Relevant primary sections: GPT-1 §§3.1–3.2, https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf; GPT-2 §§2–3, https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf; GPT-3 §2.1, https://arxiv.org/abs/2005.14165. These are historical descriptions rather than current state-of-the-art claims. Dataset inventories move to Lecture 08; scale and compute to Lecture 07.
 
 ---
 
@@ -874,7 +874,7 @@ Optional preview. This excerpt assumes a correctly configured mixed-precision fo
 [Validate the scaling ladder · #279](https://github.com/baojian/llm-26-fall/issues/279)
 
 Note:
-Optional appendix, outside the timed route. These are future course research plans, not measured claims that the scaling ladder has already been established. A tiny fitting success is necessary evidence for debugging but cannot predict a flagship model's quality. Specify hardware memory per GPU and total GPU-hours across runs when proposing larger work. This lecture requires no GPU allocation. Lecture 08 will introduce scaling-law assumptions and experimental design. This retains the connection to the Spring scaling-law pages without taking over the training-and-decoding class.
+Optional appendix, outside the timed route. These are future course research plans, not measured claims that the scaling ladder has already been established. A tiny fitting success is necessary evidence for debugging but cannot predict a flagship model's quality. Specify hardware memory per GPU and total GPU-hours across runs when proposing larger work. This lecture requires no GPU allocation. Lecture 07 will introduce scaling-law assumptions and experimental design. This retains the connection to the Spring scaling-law pages without taking over the training-and-decoding class.
 
 ---
 
