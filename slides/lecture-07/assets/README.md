@@ -19,6 +19,19 @@ The dense compute approximation is `C = 6ND`, with reference
 | `frontier.json` | Mean excess loss at four fitting budgets |
 | `holdout.json` | Total loss and a deliberately shifted larger-scale holdout |
 | `synthetic-runs.csv` | Four fitting budgets and one holdout, three invented replicates each |
+| `training-matmul.svg`, `.excalidraw` | Forward, input-gradient, and weight-gradient products with dimensions |
+| `warmup-fraction.svg`, `.excalidraw` | 200 updates occupy 20% or 2% of two normalized run bars |
+| `prediction-check.svg`, `.excalidraw` | Fit, freeze, predict, then inspect the reserved larger run |
+
+The three diagrams are original course drawings. `build_diagrams.py` writes
+both editable scenes and SVGs from the same coordinates and text, following
+Lecture 06's export convention. In the matrix diagram, `G = ∂L/∂Y`; each
+product has approximately `2mdh` FLOPs. The warmup bars each represent a whole
+run, so their absolute update durations differ.
+
+The Gopher/Chinchilla table in the slides uses reported counts from Hoffmann
+et al., Table 1, rather than this synthetic dataset. It is a native table,
+with the source and limits of the compute comparison in the slide notes.
 
 The fitting budgets are `C/C0 = 0.25, 1, 4, 16`; the holdout is `64`.
 Replicate offsets are exactly `-0.01, 0, +0.01 nats/token`. At 64, add a further
@@ -32,6 +45,7 @@ Rebuild with the repository environment:
 
 ```sh
 uv run python slides/lecture-07/assets/build_assets.py
+uv run python slides/lecture-07/assets/build_diagrams.py
 ```
 
 `scaling.py` and the notebook use only Python's standard library. The browser

@@ -123,8 +123,8 @@ remains a preparation target, subject to the checks in Section 7.
 | 2–4 | N-grams, embeddings, attention | finish the measurements in Section 6; download sources; tokenizer counts | regex and tokenizer tasks |
 | 5 | Transformer (October 10 make-up class) | dedup, decontaminate, tokenize; train the 30M and 125M proxies on the full mixture | shape checks on the decoder |
 | 6 | Pretraining and decoding | **launch the 1B flagship** (about one day on 32 cards); publish the training curve live | resumed-run and failure-diagnosis exercises on the 125M |
-| 7 | Data preparation | 125M ablations: two data policies (Chinese share, with/without Cosmopedia) at equal token budget | compare the two policies |
-| 8 | Compute and scaling | fit the 30M–350M ladder; predict the 1B loss, then compare with the real run; dense versus MoE at equal data (Section 6) | resource estimate versus measured value |
+| 7 | Compute and scaling | fit the 30M–350M ladder; predict the 1B loss, then compare with the real run; dense versus MoE at equal data (Section 6) | resource estimate versus measured value |
+| 8 | Data preparation | 125M ablations: two data policies (Chinese share, with/without Cosmopedia) at equal token budget | compare the two policies |
 | 9 | Evaluation | evaluate the 1B against Qwen3-0.6B-Base, SmolLM2, GPT-2 XL; contamination audit | audit one benchmark item |
 | 10–11 | SFT, preferences | SFT and a DPO pass on the 1B with open instruction data | before/after on one prompt set |
 | 12–16 | RAG, inference, diffusion, agents, synthesis | serve the model (vllm is installed on the PPU image); latency tables | projects use the checkpoints |
