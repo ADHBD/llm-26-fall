@@ -66,18 +66,14 @@ Allow two minutes. Retrieve Lecture 06: a loss value is meaningful only with the
 
 <!-- .slide: id="training-flops" -->
 
-## A first compute estimate
+## Where does the factor six come from?
 
-$$C \approx 6ND$$
+<img class="diagram" src="assets/training-matmul.svg" data-excalidraw-source="assets/training-matmul.excalidraw" alt="Forward XW, input gradient G times W transpose, and weight gradient X transpose times G each cost approximately 2mdh FLOPs. Matrix dimensions are shown.">
 
-- Dense weight multiplies: about $2N$ FLOPs per token forward.
-- Backpropagation adds roughly twice the forward work.
-- Multiplication and addition count as **two** operations.
-
-<p class="caption">A teaching approximation. Attention, the output head, and recomputation need explicit accounting.</p>
+<p class="caption">$G=\partial L/\partial Y$. Three dense products: $\approx 6m(dh)$ FLOPs. Across training: $C\approx 6ND$.</p>
 
 Note:
-Allow three minutes. A dense matrix multiply uses approximately two operations per weight per input vector. Backward computes input and weight gradients. This yields the factor six when those multiplies dominate. Token lookup does not perform a multiply for every embedding weight; a tied output head still performs a vocabulary projection. Attention work grows with context length, and checkpoint recomputation adds work. State N's convention whenever using the approximation. It is not an exact runtime or hardware-cost model. Sources: Kaplan et al. Appendix A; Hoffmann et al. Appendix F; Porian et al. §3.1, https://arxiv.org/html/2406.19146v4.
+Allow three minutes. Retrieve Lecture 03's backward pass and Lecture 05's matrix dimensions. Flatten batch and sequence into m token positions; this layer has dh weights. Multiplication and addition count as two operations, so each of the three products costs approximately 2mdh. G is the incoming gradient, not another learned matrix. Sum over dense layers and all D processed tokens to get 6ND when these products dominate. This ignores biases and pointwise work. Token lookup does not multiply every embedding weight; a tied output head still performs a vocabulary projection. Attention and checkpoint recomputation add work. State N's convention. This is not an exact runtime or hardware-cost model. Sources: Kaplan et al. Appendix A; Hoffmann et al. Appendix F; Porian et al. §3.1, https://arxiv.org/html/2406.19146v4. Original editable course diagram.
 
 ---
 
@@ -185,7 +181,7 @@ $$\log(L-E)=\log K-\gamma\log(C/C_0)$$
 <p class="caption">Our reference budget: $C_0=1.2\times10^{18}$ FLOPs.</p>
 
 Note:
-Allow three minutes. The frontier means the best allocation available for each compute level under the stated protocol, rather than every arbitrary training run. For the toy surface, minimization gives K=1.6 and gamma=0.25 with C0=1.2e18. Quadrupling compute multiplies excess loss by 4^-0.25 ≈ 0.7071. Total loss does not shrink by the same factor because of E. Straight lines can appear over a limited interval even when extrapolation fails. Kaplan et al. §§1–3 establish the empirical power-law motivation: https://arxiv.org/abs/2001.08361.
+Allow two minutes. The frontier means the best allocation available for each compute level under the stated protocol, rather than every arbitrary training run. For the toy surface, minimization gives K=1.6 and gamma=0.25 with C0=1.2e18. Quadrupling compute multiplies excess loss by 4^-0.25 ≈ 0.7071. Total loss does not shrink by the same factor because of E. Straight lines can appear over a limited interval even when extrapolation fails. Kaplan et al. §§1–3 establish the empirical power-law motivation: https://arxiv.org/abs/2001.08361.
 
 ---
 
@@ -203,7 +199,25 @@ The later estimate allocates more of each budget increase to training tokens.
 <p class="source">Historical estimates under different experimental protocols; Hoffmann et al., Table 2.</p>
 
 Note:
-Allow two minutes. Give only the historical comparison needed for the allocation question. Hoffmann et al. trained a 70B Chinchilla model on 1.4T tokens, compared with Gopher's 280B and 300B, and reported better performance at approximately the same training budget. Do not present the table as two universal competing truths. Their three fitting methods give somewhat different exponents; the table explicitly selects the IsoFLOP method. Sources: https://arxiv.org/html/2203.15556v1#S3.SS4 and Table 1; Kaplan et al., https://arxiv.org/abs/2001.08361.
+Allow one minute. Give only the historical comparison needed for the allocation question. Hoffmann et al. trained a 70B Chinchilla model on 1.4T tokens, compared with Gopher's 280B and 300B, and reported better performance at approximately the same training budget. Do not present the table as two universal competing truths. Their three fitting methods give somewhat different exponents; the table explicitly selects the IsoFLOP method. Sources: https://arxiv.org/html/2203.15556v1#S3.SS4 and Table 1; Kaplan et al., https://arxiv.org/abs/2001.08361.
+
+---
+
+<!-- .slide: id="chinchilla-case" -->
+
+## A smaller model, trained on more tokens
+
+| Reported model | Parameters | Training tokens |
+| --- | ---: | ---: |
+| Gopher | 280B | 300B |
+| Chinchilla | 70B | 1.4T |
+
+Chinchilla performed better across the paper's evaluated tasks at a comparable training budget.
+
+<p class="source"><a href="https://arxiv.org/html/2203.15556v1#S4">Hoffmann et al. (2022)</a>, Table 1 and §4. Reported models; separate from our synthetic examples.</p>
+
+Note:
+Allow one minute. Ask which quantity increased when the parameter count fell. The paper reports the same training budget. The rounded headline counts inserted into 6ND give 5.04e23 and 5.88e23 FLOPs, so do not claim exact equality under that approximation; Appendix F explains detailed FLOP accounting. This comparison motivates allocation, but does not isolate allocation as the only changed variable; the paper also documents recipe changes. Avoid importing its coefficients into our invented surface.
 
 ---
 
@@ -321,7 +335,7 @@ The lowest loss among tested runs is a **measured envelope**.
 Untested choices may improve it.
 
 Note:
-Allow two minutes. This short distinction prepares students for Jiaxuan's article, §2.1, https://jiaxuanzou0714.github.io/blog/2026/how-to-build-scientific-scaling-ladder/. Tuning quality and forecast quality answer different questions. A fitted curve through poorly optimized small models can mislead a compute-allocation decision. A fixed recipe can still be worth forecasting even if it is not the best recipe. Charge tuning runs, repeated seeds, and validation runs to the experiment budget. Do not reproduce or pre-empt the guest's full methodology.
+Allow one minute. This short distinction prepares students for Jiaxuan's article, §2.1, https://jiaxuanzou0714.github.io/blog/2026/how-to-build-scientific-scaling-ladder/. Tuning quality and forecast quality answer different questions. A fitted curve through poorly optimized small models can mislead a compute-allocation decision. A fixed recipe can still be worth forecasting even if it is not the best recipe. Charge tuning runs, repeated seeds, and validation runs to the experiment budget. Do not reproduce or pre-empt the guest's full methodology.
 
 ---
 
@@ -329,17 +343,12 @@ Allow two minutes. This short distinction prepares students for Jiaxuan's articl
 
 ## A fixed warmup can change the comparison
 
-| Run length | Warmup | Fraction in warmup |
-| --- | ---: | ---: |
-| 1,000 updates | 200 updates | 20% |
-| 10,000 updates | 200 updates | 2% |
+<img class="diagram" src="assets/warmup-fraction.svg" data-excalidraw-source="assets/warmup-fraction.excalidraw" alt="Normalized run bars show 200 warmup updates taking 20 percent of a 1000-update run and 2 percent of a 10000-update run.">
 
-A shared number can represent different training regimes.
-
-<p class="caption">Toy arithmetic. Declare a scaling rule and validate it across the sizes you compare.</p>
+<p class="caption">Toy arithmetic. Equal warmup steps can represent different training regimes.</p>
 
 Note:
-Allow two minutes. This retrieves Lecture 06's schedule endpoints. If batch size changes, update fractions and token fractions can differ as well. The slide does not prescribe a universal warmup fraction. It shows a possible confound that must be controlled or deliberately studied. Porian et al. §3.2 discuss warmup's effect on compute-optimal estimates: https://arxiv.org/html/2406.19146v4. Hyperparameter transfer such as muP is a useful optional reading, not a promise that all hyperparameters transfer across changes in depth, data, or training duration.
+Allow one minute. This retrieves Lecture 06's schedule endpoints. If batch size changes, update fractions and token fractions can differ as well. The slide does not prescribe a universal warmup fraction. It shows a possible confound that must be controlled or deliberately studied. Porian et al. §3.2 discuss warmup's effect on compute-optimal estimates: https://arxiv.org/html/2406.19146v4. Hyperparameter transfer such as muP is a useful optional reading, not a promise that all hyperparameters transfer across changes in depth, data, or training duration.
 
 ---
 
@@ -358,6 +367,19 @@ Changing a data mixture also changes its training loss distribution.
 
 Note:
 Allow two minutes. Evaluate different training mixtures against a fixed external corpus. For a tokenizer change, loss per token has a new unit; Lecture 02's bits per byte offers a common-text comparison. Pair seeds where useful, but still quantify differences across independent runs. Validation has two distinct levels: held-out text measures generalization within a run, while held-out scale tests a fitted prediction across runs. The latter must be excluded from selecting the recipe and fit if it is to be a final check.
+
+---
+
+<!-- .slide: id="freeze-before-validation" -->
+
+## Freeze the prediction before the larger run
+
+<img class="diagram" src="assets/prediction-check.svg" data-excalidraw-source="assets/prediction-check.excalidraw" alt="Four stages: fit and tune on small runs, freeze the recipe and curve and tolerance, write the larger-budget prediction, then reveal the reserved run and compare the error.">
+
+<p class="caption">If this run changes the recipe or fit, reserve another run for a fresh check.</p>
+
+Note:
+Allow two minutes. This is the workflow for E03, which follows the small-budget plot. Ask what must be written down before opening the holdout rows: fitted coefficients, evaluation convention, target budget, prediction, and the acceptance rule. A held-out text split within each run and a held-out scale across runs answer different questions. The final larger condition must stay outside recipe selection as well as curve fitting. Our notebook uses a supplied floor and a predeclared tolerance. The next independent check costs compute too. Original course diagram; see Jiaxuan Zou's article §§8 and 10 for a broader discussion of validation: https://jiaxuanzou0714.github.io/blog/2026/how-to-build-scientific-scaling-ladder/.
 
 ---
 
@@ -488,7 +510,7 @@ Three minutes including debrief. An acceptable forecast comparison uses two cand
 <p class="source"><a href="https://jiaxuanzou0714.github.io/blog/2026/how-to-build-scientific-scaling-ladder/">How to Build a Scientific Scaling Ladder</a></p>
 
 Note:
-Allow three minutes for slides 29–30 together, finishing by 15:10. Ask each student to choose one question to carry into the guest session. These are instructor discussion prompts, not an agreed speaker agenda. The linked article is pre-reading and the basis identified by the instructor for the talk. Do not attribute the toy examples or teaching thresholds to Jiaxuan.
+Allow three minutes for slides 31–32 together, finishing by 15:10. Ask each student to choose one question to carry into the guest session. These are instructor discussion prompts, not an agreed speaker agenda. The linked article is pre-reading and the basis identified by the instructor for the talk. Do not attribute the toy examples or teaching thresholds to Jiaxuan.
 
 ---
 
@@ -506,7 +528,7 @@ A useful experiment states:
 <p class="caption">Proposal: October 21, 23:59. A2: October 31, 23:59. Submit privately through eLearning.</p>
 
 Note:
-Finish by 15:10. This connects the lecture to the existing project proposal; it adds no deliverable or grading criterion. The full project scope and requirements remain in the public project guidance. Show the guest welcome during the 15-minute break, and let the guest control the final period. If running late, shorten slides 25–27 and do E04 as a spoken prompt. Preserve the guest start time.
+Finish by 15:10. This connects the lecture to the existing project proposal; it adds no deliverable or grading criterion. The full project scope and requirements remain in the public project guidance. Show the guest welcome during the 15-minute break, and let the guest control the final period. If running late, shorten slides 27–29 and do E04 as a spoken prompt. Preserve the guest start time.
 
 ---
 
@@ -540,4 +562,4 @@ Suggested introduction, within the guest's 45-minute slot: Jiaxuan is an undergr
 <p class="caption">The companion notebook is ungraded and runs offline with Python's standard library.</p>
 
 Note:
-Additional optional readings: Yang et al., Tensor Programs V, https://arxiv.org/abs/2203.03466, for muP and hyperparameter transfer; Muennighoff et al., https://arxiv.org/abs/2305.16264, for repeated data; Sardana et al., https://arxiv.org/abs/2401.00448, for inference-aware allocation. Read these after the core material. No fixed reference count or additional assignment is introduced. All numerical curves in this deck are authored synthetic illustrations, not reported research measurements.
+The local reading guide, optional-reading.md, gives a short route and questions for these sources. Additional optional readings: Yang et al., Tensor Programs V, https://arxiv.org/abs/2203.03466, for muP and hyperparameter transfer; Muennighoff et al., https://arxiv.org/abs/2305.16264, for repeated data; Sardana et al., https://arxiv.org/abs/2401.00448, for inference-aware allocation. Read these after the core material. No fixed reference count or additional assignment is introduced. All numerical curves in this deck are authored synthetic illustrations, not reported research measurements.

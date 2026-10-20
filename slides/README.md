@@ -88,13 +88,15 @@ comparison and a weights-only control. See the [teaching plan](lecture-06/teachi
 [reading guide](lecture-06/optional-reading.md), and [asset provenance](lecture-06/assets/README.md).
 
 [Lecture 07](lecture-07/index.html) introduces compute budgets, model/data
-allocation, and scaling-law extrapolation in 32 slides, including a welcome for
+allocation, and scaling-law extrapolation in 34 slides, including a welcome for
 Jiaxuan Zou's guest session. Its [teaching plan](lecture-07/teaching-plan.md)
 fits the instructor material around Quiz 3 and reserves the third period for
 the guest. Four ungraded exercises in the
 [notebook](lecture-07/practice.ipynb) run offline with Python's standard library.
 An interactive budget curve and a deliberately failed larger-scale prediction
-use explicitly synthetic data; see [provenance](lecture-07/assets/README.md).
+use explicitly synthetic data. Three editable diagrams explain compute and
+validation; see the [reading guide](lecture-07/optional-reading.md) and
+[provenance](lecture-07/assets/README.md).
 
 ## Teaching from a classroom browser
 

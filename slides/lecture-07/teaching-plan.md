@@ -9,7 +9,7 @@ preparation and quality.
 
 ## Teaching package
 
-The deck has **32 slides**, with a guest welcome and final references included.
+The deck has **34 slides**, with a guest welcome and final references included.
 The instructor's material occupies 75 minutes after the existing 15-minute
 Quiz 3 slot. The full final period belongs to the guest. Quiz questions, hints,
 and keys are not part of this public package.
@@ -23,7 +23,11 @@ to reproduce his talk.
 Four ungraded exercises, E01–E04, appear in matching notebook order. The
 notebook needs only Python's standard library and the supplied `assets/`.
 Students can do the arithmetic or discuss the tables without opening Jupyter.
-All loss values and charts are explicitly synthetic. No job launch, new
+All loss values and numeric charts are explicitly synthetic. The Chinchilla
+case is a separate, cited comparison of reported model sizes and token counts.
+Three editable diagrams explain matrix-product costs, warmup fractions, and
+the order of fitting and validation. A [reading guide](optional-reading.md)
+connects the four exercises to the core sources. No job launch, new
 graded work, or GPU allocation is required.
 
 ## Timed route
@@ -37,20 +41,20 @@ Times are Asia/Shanghai. Exercise times include a short debrief.
 | 13:49–13:56 | 5–6 | Dense compute approximation and E01 |
 | 13:56–14:00 | 7–8 | Persistent memory and illustrative elapsed time |
 | 14:00–14:06 | 9–10 | Equal-compute curve and parametric loss |
-| 14:06–14:13 | 11–13 | Power laws, historical estimates, protocol effects |
+| 14:06–14:13 | 11–14 | Power laws, historical estimates, Chinchilla case, protocol effects |
 | 14:13–14:15 | — | Questions, collection/transition buffer |
 | 14:15–14:25 | — | Break |
-| 14:25–14:29 | 14–15 | Allocation derivation |
-| 14:29–14:35 | 16–17 | E02 and interactive budget demonstration |
-| 14:35–14:43 | 18–21 | Experimental grid, recipe versus frontier, warmup, evaluation |
-| 14:43–14:52 | 22–23 | Synthetic fit and E03, including holdout reveal |
-| 14:52–14:56 | 24–25 | Failed extrapolation and diagnostic evidence |
-| 14:56–15:00 | 26–27 | Data/serving constraints and loss versus capability |
-| 15:00–15:03 | 28 | E04: a twelve-run proposal |
-| 15:03–15:06 | 29–30 | Guest questions and existing coursework reminder |
-| 15:06–15:10 | 32 as needed | Questions, reading, and transition buffer |
-| 15:10–15:25 | 31 as holding slide | Break and speaker setup |
-| 15:25–16:10 | 31, then guest's own material | Jiaxuan Zou guest session |
+| 14:25–14:29 | 15–16 | Allocation derivation |
+| 14:29–14:35 | 17–18 | E02 and interactive budget demonstration |
+| 14:35–14:43 | 19–23 | Grid (2 min), recipe/frontier (1), warmup (1), evaluation (2), freeze/predict/check (2) |
+| 14:43–14:52 | 24–25 | Synthetic fit and E03, including holdout reveal |
+| 14:52–14:56 | 26–27 | Failed extrapolation and diagnostic evidence |
+| 14:56–15:00 | 28–29 | Data/serving constraints and loss versus capability |
+| 15:00–15:03 | 30 | E04: a twelve-run proposal |
+| 15:03–15:06 | 31–32 | Guest questions and existing coursework reminder |
+| 15:06–15:10 | 34 as needed | Questions, reading, and transition buffer |
+| 15:10–15:25 | 33 as holding slide | Break and speaker setup |
+| 15:25–16:10 | 33, then guest's own material | Jiaxuan Zou guest session |
 
 A suggested guest allocation is a 2-minute introduction, 33-minute talk, and
 10-minute discussion, subject to the speaker's preference. The instructor
@@ -58,7 +62,7 @@ confirmed the session and article, not a minute-by-minute guest agenda or a
 final speaker-approved English title. “How to Build a Scientific Scaling
 Ladder” is the English rendering used for the announcement.
 
-If time slips, shorten slides 25–27 and make E04 a spoken design prompt.
+If time slips, shorten slides 27–29 and make E04 a spoken design prompt.
 Retain E01's budget comparison, E02's allocation calculation, and E03's
 independent prediction check. Finish the instructor block by 15:10 and
 start the guest at 15:25. No live training is needed.
@@ -129,6 +133,7 @@ to fit the guest-session format.
 
 ```sh
 uv sync
+uv run python slides/lecture-07/assets/build_diagrams.py
 uv run python scripts/slides.py serve
 uv run python -m pytest -q tests/test_lecture_07.py
 node slides/lecture-07/check-demo.mjs http://127.0.0.1:8000
@@ -145,4 +150,10 @@ The PDF uses the initial demo state. Review images and PDF remain in ignored
 Numerical checks include an independent search around the allocation minimum,
 recovery of the fit coefficients, exclusion of the larger holdout from fitting,
 invalid-input cases, and notebook execution from a fresh copied directory.
-Classroom timings are planning estimates, not a live rehearsal.
+
+Preparation check, October 20, 2026 (Asia/Shanghai): all 10 numerical tests
+passed; all six notebook code cells ran in a fresh kernel. The dimensioned
+backward products were also checked against autograd. The 34 slides passed
+three viewport checks; every slide image and all 34 PDF pages were inspected.
+Budget cycling/reset and the notebook launcher passed their browser checks.
+Classroom timings remain planning estimates, not a live rehearsal.
