@@ -1,23 +1,23 @@
+# Teaching-team edit, October 20: restore Python imports, the
+# PREDICTIONS opening, and pool keys damaged in the uploaded file.
+import hashlib
+import json
+import math
 
 
-导入 hashlib
-
-导入 数学
-
-
-预测 = 
+PREDICTIONS = {
     "same_models": ["b"],
     "ratio_beats_likelihood": ["b"],
     "sampling_is_not_topk": ["r"],
 }
 MY_CASES = [
-    # 计数/哈希：重复的单词和相邻的双词都必须被计数。
-    # “red red” -> 2个单语“red” + 1个双语（red, red）；长文档则更为极端。
+    # Count repeated unigrams and adjacent bigrams.
+    # 'red red' contributes two red unigrams and one (red, red) bigram.
     (
         {
             "raw_fit": [["red"], ["red"], ["red"], ["blue"]],
             "target_fit": [["red"], ["red"], ["blue"], ["blue"]],
-            "池": [
+            "pool": [
                 {"id": "a", "tokens": ["red", "red"]},
                 {"id": "b", "tokens": ["red"]},
             ],
@@ -28,14 +28,12 @@ MY_CASES = [
         },
         ["b", "a"],
     ),
-    # 加权/采样：“sun”的对数权重约为-1.04，而“rain”约为
-# +0.05（权重 0.25 对 0.75），并且在均匀分布的情况下，权重更高的
-    # “雨”赢得了第一轮抽选，因此选择是按照权重而非顺序进行的。
+    # With equal uniforms, rain's higher importance weight wins the first draw.
     (
         {
             "raw_fit": [["sun"], ["sun"], ["rain"]],
             "target_fit": [["rain"], ["wind"]],
-            "池": [
+            "pool": [
                 {"id": "a", "tokens": ["sun"]},
                 {"id": "b", "tokens": ["rain"]},
             ],
@@ -47,6 +45,13 @@ MY_CASES = [
         ["b"],
     ),
 ]
+# Teaching-team clarification, October 20 (original reflection below):
+# At M=256, development ratio-top-k JS 0.213147 is HIGHER (worse) than
+# DSIR 0.208543; uniform sampling is the best of these four methods here.
+# In same_models, b wins because its supplied U=0.75 exceeds r's U=0.25;
+# equal model weights alone do not trigger the ID tie-break.
+# The second personal case gives log weights approximately -1.045 and
+# 0.054 for sun and rain, with normalized weights 1/4 and 3/4.
 NOTES = (
     "The raw denominator matters because a feature common in the target but equally "
     "common in raw text has log p_T - log p_R near zero, so DSIR stops rewarding "
