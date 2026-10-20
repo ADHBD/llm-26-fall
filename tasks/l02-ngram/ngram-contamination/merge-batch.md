@@ -1,7 +1,7 @@
 # October 20, 2026 review: n-gram contamination
 
-**Status:** approved and ready. Merge the reviewed heads below only after this
-record reaches `main` and their GitHub checks pass.
+**Status:** complete. All three student PRs merged on October 20, 2026,
+at the approved heads after the batch record reached `main` and checks passed.
 
 **Instructor decision, October 20, 2026:** the instructor approved merging
 #295, #301, and #303 with the prepared teaching-team translation and
@@ -64,9 +64,29 @@ submission. The original PRs preserve student attribution.
 - Experiment reports remain local. These are optional participation tasks;
   checker results are not course grades.
 
-## Completion requirements
+## Completion record
 
-Merge the student PRs at the recorded heads, record their resulting merge
-commits, and regenerate the progress board through a completion PR.
+- The approved batch record merged first in
+  [PR #308](https://github.com/baojian/llm-26-fall/pull/308), commit
+  `b9f2d08b7beae8cbbc2d750f7400acca054616a2`, at 13:00:43 Asia/Shanghai.
+- All three student PRs merged individually with their original authorship
+  and separate teaching-team correction history preserved:
+
+| PR | Merged October 20, Asia/Shanghai | Merge commit |
+| --- | --- | --- |
+| #295 | 13:01:01 | `6c469a52ac5e4b9dd6c0a91defbaf7400ecc18a6` |
+| #301 | 13:01:06 | `cff817c7ce3f67072e9a4472c567533a74d4d8e8` |
+| #303 | 13:01:09 | `4ec74bf8e3c8398082af33b9122f1f139adb3016` |
+
+- Each final submission passes all 19 public checks. All three PRs had
+  passing GitHub feedback and regression checks before merging.
+- The completion PR regenerates `tasks/PROGRESS.md` and `tasks/progress.svg`
+  from the merged submissions and actual merged-PR counts. `harmonyhhh66`,
+  `oooo1027`, and `cyk-1234` each receive one passed-task entry for this task.
+  Each receives Lecture 02 participation once, regardless of completing one
+  or both tasks; their earlier survey participation is retained.
+- These entries record participation and checker results. No course-grade
+  allocation is changed.
+
 Later submissions or fixes require a new explicit instructor decision under
 the repository policy.
