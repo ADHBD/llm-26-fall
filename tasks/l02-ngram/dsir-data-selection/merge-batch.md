@@ -1,8 +1,13 @@
 # October 20, 2026 review: DSIR data selection
 
-**Status:** prepared; no merges from this review have started. Completing this
-task after the earlier merge below, and applying the proposed teaching-team
-corrections, await an explicit instructor decision.
+**Status:** approved and ready. Merge the reviewed heads below only after this
+record reaches `main` and their GitHub checks pass.
+
+**Instructor decision, October 20, 2026:** after reviewing the specific
+exception and corrections, the instructor approved completing the remaining
+DSIR submissions despite the earlier #277 merge, applying the prepared
+teaching-team repairs, and crediting the accepted work on the participation
+board. This authorization covers #300 and #302 and does not reopen submissions.
 
 ## Deadline and merge history
 
@@ -16,27 +21,34 @@ corrections, await an explicit instructor decision.
   deadline. Its reviewed head was
   `2a5b3d4a1eb77049cb2595a8f3284ece07ae89e8`; the merge commit is
   `ac7f86df2d05f6e796dbf099a710c3b46bc9a73a`.
-- No earlier `merge-batch.md` exists for this task. The earlier merge requires
-  an instructor decision before completing the remaining submissions.
+- No earlier `merge-batch.md` exists for this task. The October 20 instructor
+  decision authorizes completing the remaining submissions after that merge.
 - Both remaining PRs were opened before the deadline. No other open student
   solution PR for this task was found in the October 20 review.
 
 ## Reviewed submissions
 
-| PR | Student | Reviewed original head | Original checks | Proposed teaching-team correction |
+| PR | Student | Reviewed original head | Original checks | Approved teaching-team correction |
 | --- | --- | --- | --- | --- |
 | [#300](https://github.com/baojian/llm-26-fall/pull/300) | `OOOO1027` | `f14ae57cd0888df877ea6ff347b03fbf6cd890d8` | 19 passed | None |
 | [#302](https://github.com/baojian/llm-26-fall/pull/302) | `cyk-1234` | `a86d03c825f66bdfd1c5815d829dae4760d37f8b` | Python syntax error | Restore damaged Python imports, the `PREDICTIONS` opening, and two `pool` keys; translate comments and add attributed explanation corrections |
 
-The original PRs preserve student attribution. Proposed edits are separate
+The original PRs preserve student attribution. Approved edits are separate
 teaching-team changes. The five helper implementations, prediction values,
 and personal-case expected outputs in #302 are retained.
+
+## Final heads for this batch
+
+| PR | Reviewed merge head | Correction commit |
+| --- | --- | --- |
+| #300 | `f14ae57cd0888df877ea6ff347b03fbf6cd890d8` | None |
+| #302 | `5daad98b801f9b0cf27fd16e4952360c713c743b` | `5daad98b801f9b0cf27fd16e4952360c713c743b` |
 
 ## Review and validation
 
 - Inspected both full diffs, commit histories, predictions, personal cases,
   reflections, and review threads. Each PR changes only its author's file.
-- #300 passes all 19 current public checks. The proposed repaired #302 also
+- #300 passes all 19 current public checks. The repaired #302 also
   passes all 19; the original #302 is not described as passing.
 - Reproduced development and final comparisons with the supplied CPU runner.
   Development chooses `M=256`: mean DSIR JS is `0.228352` at `M=16` and
@@ -44,15 +56,14 @@ and personal-case expected outputs in #302 are retained.
   target-only, `0.236573` ratio top-k, and `0.231733` DSIR.
 - #302's original reflection incorrectly orders development ratio-top-k
   `0.213147` and DSIR `0.208543`, and attributes `same_models` selection to
-  the ID tie-break. The proposed teaching-team note states the correct
+  the ID tie-break. The attributed teaching-team note states the correct
   comparison and the actual cause: different supplied uniforms.
 - Experiment reports remain local. These are optional participation tasks;
   checker results are not course grades.
 
 ## Completion requirements
 
-Record the instructor's decision, final reviewed heads, and correction commits
-here before starting the remaining merges. Merge the student PRs at those
-heads, record their resulting merge commits, and regenerate the progress board
-through a completion PR. Later submissions or fixes require a new explicit
-instructor decision under the repository policy.
+Merge the student PRs at the recorded heads, record their resulting merge
+commits, and regenerate the progress board through a completion PR.
+Later submissions or fixes require a new explicit instructor decision under
+the repository policy.
