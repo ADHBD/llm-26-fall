@@ -42,8 +42,8 @@ mandatory curriculum delivered during every meeting.
 | 4 | Sep 30 | Neural LMs and recurrent attention | A tiny training loop, recurrent-state trace, and additive source alignment |
 | 5 | Sat, Oct 10 | The Transformer as a working model | A decoder block with shape and causal-mask checks |
 | 6 | Oct 14 | Pretraining and decoding | A training curve, resumed run, and diagnosed failure |
-| 7 | Oct 21 | Data preparation and quality | A comparison of two data policies under controlled conditions |
-| 8 | Oct 28 | Compute budgets and scaling | A resource estimate checked against measurements |
+| 7 | Oct 21 | Compute budgets and scaling; Jiaxuan Zou guest session | A compute estimate and a scaling prediction checked at a held-out scale |
+| 8 | Oct 28 | Data preparation and quality | A comparison of two data policies under controlled conditions |
 | 9 | Nov 4 | Evaluation and experimental design | An audited evaluation and a qualified interpretation |
 | 10 | Nov 11 | Supervised fine-tuning | A before/after adaptation comparison |
 | 11 | Nov 18 | Preferences, rewards, and alignment | A checked preference loss and reward-failure analysis |
@@ -62,6 +62,11 @@ guides revision of project claims, evidence, and writing.
 
 All 16 meetings retain instruction and practical work. Project checkpoints
 are written submissions; the final synthesis session adds guided practice.
+
+The instructor moved scaling to Week 7 for Jiaxuan Zou's guest talk,
+[How to Build a Scientific Scaling Ladder](https://jiaxuanzou0714.github.io/blog/2026/how-to-build-scientific-scaling-ladder/),
+in the third period. Data preparation moves to Week 8. Assessment dates
+remain as listed in the [current schedule](schedule.md).
 
 ## Spring material to retain, shorten, and move
 
@@ -99,10 +104,10 @@ requirements for this course.
 | Source | Fall use | Adaptation boundary |
 | --- | --- | --- |
 | L01 tokenization; A1 basics | Weeks 1–2; A1 | Small correctness-focused tokenizer exercise; no high-throughput implementation requirement |
-| L02 PyTorch and resource accounting | Weeks 3, 6, 8 | Tensor mechanics and resource estimates; detailed hardware arithmetic optional |
+| L02 PyTorch and resource accounting | Weeks 3, 6, 7 | Tensor mechanics and resource estimates; detailed hardware arithmetic optional |
 | L03 architectures; A1 components | Week 5; A2 | One coherent decoder baseline; one modern-component ablation optional |
-| L13–14 data; A4 | Week 7; A2 or project | Small supplied corpus, filtering/deduplication, and controlled comparison |
-| L09/L11 scaling; A3 | Week 8 | Fit supplied run results and optionally add small local runs; no Stanford API dependency |
+| L13–14 data; A4 | Week 8; A2 or project | Small supplied corpus, filtering/deduplication, and controlled comparison |
+| L09/L11 scaling; A3 | Week 7 | Fit supplied run results and optionally add small local runs; no Stanford API dependency |
 | L12 evaluation | Week 9 and project | Choose appropriate tasks, audit validity, and qualify conclusions |
 | L15–16 post-training; A5 | Weeks 10–11; A3 | SFT core, DPO worked exercise; GRPO optional practice for all students |
 | L10 inference; A2 systems selections | Week 13 | Measure caching/batching/quantization; custom kernels and distributed training optional |
