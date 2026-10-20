@@ -18,7 +18,17 @@ GOOD = (
 def make_tree(tmp_path):
     tasks_root = tmp_path / "tasks"
     shutil.copytree(ROOT / "tasks/TEMPLATE", tasks_root / "TEMPLATE")
-    shutil.copytree(ROOT / "tasks/example", tasks_root / "example")
+    example = tasks_root / "example/word-count"
+    shutil.copytree(
+        ROOT / "tasks/example/word-count", example,
+        ignore=shutil.ignore_patterns("submissions", "__pycache__"),
+    )
+    # Keep fixture participants independent of real student submissions.
+    (example / "submissions").mkdir()
+    shutil.copy2(
+        ROOT / "tasks/example/word-count/submissions/octocat.py",
+        example / "submissions/octocat.py",
+    )
     demo = tasks.create_task("l02-ngram", "demo", "Demo", tasks_root)
     (demo / "task.toml").write_text((demo / "task.toml").read_text().replace('proposed_by = ""', 'proposed_by = "alice"'))
     (demo / "submissions/alice.py").write_text(GOOD)
