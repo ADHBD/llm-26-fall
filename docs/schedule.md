@@ -51,8 +51,8 @@ Weeks follow the university academic calendar: they run Sunday through Saturday,
 | 4 | Wed, Sep 30, 2026 | Neural LMs and Recurrent Attention | A1 due |
 | 5 | **Sat, Oct 10, 2026** | **Attention and the Transformer** | **Make-up class**; Quiz 2; [A2 released](../assignments/a2-build-a-small-lm/README.md); [candidate projects](project-candidates.html) |
 | 6 | Wed, Oct 14, 2026 | Pretraining and decoding in practice | — |
-| 7 | Wed, Oct 21, 2026 | Data preparation and quality | Quiz 3; Project proposal due |
-| 8 | Wed, Oct 28, 2026 | Compute budgets and scaling | A2 due **Sat, Oct 31** |
+| 7 | Wed, Oct 21, 2026 | Compute budgets and scaling; guest talk by Jiaxuan Zou | Quiz 3; Project proposal due |
+| 8 | Wed, Oct 28, 2026 | Data preparation and quality | A2 due **Sat, Oct 31** |
 | 9 | Wed, Nov 4, 2026 | Evaluation and experimental design | — |
 | 10 | Wed, Nov 11, 2026 | Supervised fine-tuning | Quiz 4; A3 released |
 | 11 | Wed, Nov 18, 2026 | Preferences, rewards, and alignment | — |
@@ -66,6 +66,13 @@ Weeks follow the university academic calendar: they run Sunday through Saturday,
   October 10; time and room follow the university make-up-day notice.
 - There are 16 meetings of three 45-minute periods: 48 academic periods,
   matching the registered allocation. Lecture numbers follow these meetings.
+- Lecture 07 and Lecture 08 exchange topics to align with
+  [Jiaxuan Zou's](https://jiaxuanzou0714.github.io/) guest session on
+  **October 21, 15:25–16:10 (Asia/Shanghai), period 8**, in HGX103.
+  The topic is [How to Build a Scientific Scaling Ladder](https://jiaxuanzou0714.github.io/blog/2026/how-to-build-scientific-scaling-ladder/).
+  The first two periods introduce compute budgets and scaling laws, with
+  the existing 15-minute Quiz 3 slot in the first period. Quiz 3, the project
+  proposal deadline, and the A2 deadline retain their published dates.
 - December 23 includes guided revision of project claims and evidence.
   Project checkpoints remain individual written submissions through eLearning.
 - Weeks 17–18 (Dec 27, 2026 – Jan 9, 2027) are exam weeks with no classes.
