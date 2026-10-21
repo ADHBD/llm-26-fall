@@ -6,6 +6,11 @@ Use this guide alongside the [slides](index.html) and [practice notebook](practi
 The readings are optional; they add no submission or reference-count requirement.
 Jiaxuan Zou's guest session is October 21, 15:25–16:10 (Asia/Shanghai).
 
+The [90-minute board notes](../../docs/lecture-07-scaling-laws/README.md) give
+a standalone lesson on Kaplan, Chinchilla, and Porian, with the allocation
+derivation written step by step. The LaTeX source includes worked examples,
+discussion answers, vector figures, and PDF build instructions.
+
 ## A short reading route
 
 | Reading | Focus | Bring one answer to class |

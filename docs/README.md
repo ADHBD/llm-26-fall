@@ -1,5 +1,10 @@
 # Course reading pages
 
+The [Lecture 07 board notes](lecture-07-scaling-laws/README.md) provide a
+standalone 90-minute lesson on Kaplan, Chinchilla, and Porian. The LaTeX source
+includes a step-by-step allocation derivation, original vector figures,
+worked examples, discussion answers, and an independent prediction check.
+
 The [individual project catalog](project-candidates.html) puts student-proposed
 projects first, followed by 48 suggested projects for the October 10 Lecture 05
 release. A left contents panel links the seven guidance sections and nine topic
