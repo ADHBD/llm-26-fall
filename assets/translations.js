@@ -1,14 +1,7 @@
 // Chinese translations for the English course page. Keep keys in sync with index.html.
 window.courseTranslations = {
-  "Guest talk · October 21: Jiaxuan Zou on scaling ladders": "嘉宾报告 · 10 月 21 日：邹嘉轩谈 Scaling Ladder",
   "How to Build a Scientific Scaling Ladder": "如何搭建一个科学的 Scaling Ladder",
   "Jiaxuan Zou": "邹嘉轩",
-  "· Mathematics and Statistics, Xi’an Jiaotong University; research intern, ByteDance Seed Pre-training.": "· 西安交通大学数学与统计学院本科生；字节跳动 Seed 预训练团队研究实习生。",
-  "Wednesday, October 21, 2026 · 15:25–16:10 (Asia/Shanghai)": "2026 年 10 月 21 日（周三）· 15:25–16:10（北京时间）",
-  "Third session (period 8) · HGX103, Handan Campus": "当天第三节课（第 8 节）· 邯郸校区 HGX103",
-  "How can small training experiments guide decisions at larger scales? Lecture 07 introduces compute budgets and scaling laws before the guest session.": "如何通过小规模训练实验指导更大规模的决策？第 7 讲将在嘉宾报告前介绍计算预算与缩放定律。",
-  "Read Jiaxuan’s scaling-ladder article": "阅读邹嘉轩的 Scaling Ladder 文章",
-  "Lecture 07 schedule": "第 7 讲安排",
   "Guest talk · 15:25–16:10:": "嘉宾报告 · 15:25–16:10：",
   "Training FLOPs and memory; model-size/data tradeoffs; power laws; compute-optimal allocation; controlled experiments and extrapolation.": "训练计算量与内存；模型规模与数据量的权衡；幂律；计算最优分配；对照实验与外推。",
   "Compare equal-compute runs, fit a toy scaling curve, and test a prediction at a held-out scale.": "比较相同计算预算的运行，拟合教学用缩放曲线，并在留出的规模上检验预测。",
