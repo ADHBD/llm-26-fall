@@ -202,9 +202,9 @@ to choose another model, seed, data policy, or stopping point.
 
 ## 6. Evidence, grading, and submission
 
-Complete [report.md](report.md), targeting 600–900 words. Use figures locally to
-inspect your work; the submitted `results.json` contains the numeric curves.
-Do not reference plots or raw logs as the only evidence: they are not in the ZIP.
+Complete [report.md](report.md), targeting 600–900 words. Use a short summary,
+table, or optional figure to explain your work. Keep the machine-readable
+measurements, including numeric curves, in the submitted `results.json`.
 
 **October 29 clarification:** the original seven-file submission remains valid.
 Students who already submitted do not need to resubmit. Required experiments,
@@ -222,7 +222,7 @@ grading criteria, points, and the deadline are unchanged.
 Here `<condition>` is `baseline`, `post`, or `dedup`. Cite these keys and discuss
 the relevant values or trends in your report; a short summary or table is enough.
 You do not need to repeat full numeric arrays or attach copies of these records.
-Additional small JSON files are optional, as described below.
+Additional figures and supporting files are optional, as described below.
 
 [results-schema.json](results-schema.json) specifies the machine-readable record;
 [the synthetic example](examples/results-example.json) illustrates structure and
@@ -266,18 +266,24 @@ results.json
 report.md
 ```
 
-If useful, put supplementary JSON files directly in `evidence/` beside
-`report.md` (for example, `evidence/attention-check.json`) and cite them in your
-report. The updated packager includes `evidence/*.json`, up to **2 MiB total**,
-using the same command above. Subdirectories and other file types are not
-included. These files supplement, rather than replace, `results.json`; they
-introduce no new requirement and earn no extra credit by themselves. There is
-no requirement to add these files, rerun experiments, or resubmit. To use this
-option in an existing working copy, update only `make_submission.py` and
-`manifest.toml` from this release;
-preserve your implemented modules, report, and results.
+If useful, put figures and supporting files directly in `evidence/` beside
+`report.md`. Supported extensions are `.png`, `.jpg`, `.jpeg`, `.svg`, `.pdf`,
+`.json`, `.csv`, `.tsv`, `.txt`, and `.md`; use lowercase extensions. The updated
+packager includes these files, up to **20 MiB total**, using the same command
+above. Link them from your report, for example
+`![Training loss](evidence/loss.png)` or `[Extra check](evidence/check.json)`.
+Copy selected files from `outputs/` into `evidence/` if you want to include them.
+The script lists included attachments and warns about unsupported files or
+subdirectories in `evidence/`; those entries and files in `outputs/` stay out
+of the ZIP.
 
-Keep data, test files, environments, checkpoints, plots, and large logs out of
+Attachments supplement `results.json`. They introduce no new requirement and
+earn no extra credit by themselves. There is no requirement to add files, rerun
+experiments, or resubmit. To use this option in an existing working copy, update
+only `make_submission.py` and `manifest.toml` from this release; preserve your
+implemented modules, report, and results.
+
+Keep data, test files, environments, checkpoints, and large logs out of
 the ZIP. The staff harness supplies tests and dependencies. Your modules must
 work after extraction without your original checkout. Keep the original ZIP
 filename. Missing disclosure incurs one five-point deduction after ordinary

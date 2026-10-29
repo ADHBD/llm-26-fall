@@ -14,8 +14,8 @@ checks do and do not establish.
 TODO: Interpret the fitting floor, baseline curve, and restart evidence. Compare
 pre/post-norm using matched initial weights, batches, and token budgets. A short
 numeric summary or a link to `results.json` with the relevant keys is sufficient;
-full arrays need not be repeated. Discuss one failure mode and the limits of a
-single seed.
+full arrays need not be repeated. You may also link optional figures or supporting
+files in `evidence/`. Discuss one failure mode and the limits of a single seed.
 
 ## 3. Decoding
 
