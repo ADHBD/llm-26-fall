@@ -205,6 +205,25 @@ to choose another model, seed, data policy, or stopping point.
 Complete [report.md](report.md), targeting 600–900 words. Use figures locally to
 inspect your work; the submitted `results.json` contains the numeric curves.
 Do not reference plots or raw logs as the only evidence: they are not in the ZIP.
+
+**October 29 clarification:** the original seven-file submission remains valid.
+Students who already submitted do not need to resubmit. Required experiments,
+grading criteria, points, and the deadline are unchanged.
+
+`run.py finalize` already embeds the required records in `results.json`:
+
+| Evidence | Field in `results.json` |
+| --- | --- |
+| Training loss, learning rate, unclipped gradient norm | `runs.<condition>.history` |
+| Development loss curve | `runs.<condition>.dev` |
+| Tiny fitting and causal checks | `diagnostics` |
+| Restart-equivalence summary | `restart` |
+
+Here `<condition>` is `baseline`, `post`, or `dedup`. Cite these keys and discuss
+the relevant values or trends in your report; a short summary or table is enough.
+You do not need to repeat full numeric arrays or attach copies of these records.
+Additional small JSON files are optional, as described below.
+
 [results-schema.json](results-schema.json) specifies the machine-readable record;
 [the synthetic example](examples/results-example.json) illustrates structure and
 must not be presented as a measured run. Structural validation is not scientific
@@ -235,7 +254,7 @@ limitations, and disclosure. Hardware speed and additional training carry no bon
 uv run python make_submission.py YOUR_STUDENT_ID
 ```
 
-Upload `a2-YOUR_STUDENT_ID.zip` privately to eLearning. It contains exactly:
+Upload `a2-YOUR_STUDENT_ID.zip` privately to eLearning. Its required files are:
 
 ```text
 a2/__init__.py
@@ -246,6 +265,17 @@ a2/data_policy.py
 results.json
 report.md
 ```
+
+If useful, put supplementary JSON files directly in `evidence/` beside
+`report.md` (for example, `evidence/attention-check.json`) and cite them in your
+report. The updated packager includes `evidence/*.json`, up to **2 MiB total**,
+using the same command above. Subdirectories and other file types are not
+included. These files supplement, rather than replace, `results.json`; they
+introduce no new requirement and earn no extra credit by themselves. There is
+no requirement to add these files, rerun experiments, or resubmit. To use this
+option in an existing working copy, update only `make_submission.py` and
+`manifest.toml` from this release;
+preserve your implemented modules, report, and results.
 
 Keep data, test files, environments, checkpoints, plots, and large logs out of
 the ZIP. The staff harness supplies tests and dependencies. Your modules must

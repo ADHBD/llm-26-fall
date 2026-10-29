@@ -11,6 +11,8 @@ entry_point = "uv run python run.py suite"
 [submission]
 zip_name = "a2-<student-id>.zip"
 required = ["a2/__init__.py", "a2/model.py", "a2/train.py", "a2/generate.py", "a2/data_policy.py", "results.json", "report.md"]
+optional = ["evidence/*.json"]
+optional_max_bytes = 2097152  # 2 MiB total; no supplementary evidence is required.
 excluded = ["data/", "tests/", "outputs/", ".venv/", "*.pt", "*.zip"]
 
 [scoring]

@@ -2,6 +2,7 @@
 __pycache__/
 .pytest_cache/
 outputs/
+evidence/
 results.json
 *.zip
 *.pt

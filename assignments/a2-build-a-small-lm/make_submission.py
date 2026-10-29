@@ -1,4 +1,5 @@
 """Supplied allowlist packager. Run: uv run python make_submission.py STUDENT_ID."""
+import json
 import re
 import sys
 import tomllib
@@ -17,6 +18,29 @@ def main(arguments):
     manifest = tomllib.loads((HERE / "manifest.toml").read_text())
     required = manifest["submission"]["required"]
     problems = []
+    optional = []
+    evidence = HERE / "evidence"
+    if evidence.is_symlink():
+        problems.append("evidence/ must not be a symlink")
+    else:
+        for pattern in manifest["submission"].get("optional", []):
+            optional.extend(path.relative_to(HERE).as_posix() for path in sorted(HERE.glob(pattern)))
+    optional_bytes = 0
+    for name in optional:
+        path = HERE / name
+        if not path.is_file() or path.is_symlink() or HERE not in path.resolve().parents:
+            problems.append(f"unsafe optional evidence file: {name}")
+            continue
+        size = path.stat().st_size
+        optional_bytes += size
+        if size > manifest["submission"]["optional_max_bytes"]:
+            continue
+        try:
+            json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError, RecursionError) as exc:
+            problems.append(f"invalid optional JSON: {name}: {exc}")
+    if optional_bytes > manifest["submission"].get("optional_max_bytes", 0):
+        problems.append("optional evidence exceeds 2 MiB in total")
     for name in required:
         path = HERE / name
         if not path.is_file() or path.is_symlink() or HERE not in path.resolve().parents:
@@ -36,9 +60,9 @@ def main(arguments):
         return 1
     target = HERE / manifest["submission"]["zip_name"].replace("<student-id>", arguments[0])
     with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED) as archive:
-        for name in required:
+        for name in required + optional:
             archive.write(HERE / name, name)
-    print(f"Wrote {target.name}: {len(required)} allowlisted files. Submit privately through eLearning.")
+    print(f"Wrote {target.name}: {len(required)} required and {len(optional)} optional files. Submit privately through eLearning.")
     return 0
 
 
